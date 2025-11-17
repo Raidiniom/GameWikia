@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # GameWikia
 Personal App Project for Any Game Guide and Wiki
 
@@ -52,5 +51,3 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
-=======
->>>>>>> 32d45f3f96b7ba528e2ee55dc36ab57d228c9a22
