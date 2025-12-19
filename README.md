@@ -19,6 +19,16 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    npx expo start
    ```
 
+3. Functions should be in PascalCase
+
+   ```tsx
+   export default function HelloFunction () {
+      return (
+         <!-- Your Code Here! -->
+      );
+   }
+   ```
+
 ## Get a fresh project
 
 When you're ready, run:

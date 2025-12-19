@@ -1,6 +1,9 @@
+import { IndexStyle } from "@/styles/indexstyle";
+import { Colors } from "@/styles/theme";
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Pressable, Text, TextInput, View } from "react-native";
+
 
 export default function Index() {
   const [username, setUsername] = useState('')
@@ -22,39 +25,46 @@ export default function Index() {
     handleMsg(success)
 
     if (success) {
-      router.push('/pages/homepage')
+      router.push('/homepage')
     }
   }
 
   return (
-    <View>
-      <Text >Welcome to GameWikia</Text>
+    <View style={IndexStyle.bodyContainer} >
+      <View style={IndexStyle.loginForm} >
+        <Text style={IndexStyle.welcomeText} >Welcome to GameWikia</Text>
 
-      <View>
-        <TextInput 
-          placeholder="Username"
-
+        <TextInput style={IndexStyle.userInput}
+          placeholder="gamewikireader"
+          placeholderTextColor={`${Colors.vanilla_custard}80`}
           value={username}
           onChangeText={setUsername}
         />
         
-        <TextInput 
-          placeholder="Password"
-
+        <TextInput style={IndexStyle.userInput}
+          placeholder="12345678"
+          placeholderTextColor={`${Colors.vanilla_custard}80`}
           value={password}
           onChangeText={setPassword}
           secureTextEntry
         />
 
-        <TouchableOpacity onPress={handleLogin}>
-          <Text>Login</Text>
-        </TouchableOpacity>
+        <Pressable 
+          onPress={handleLogin}
+          style={({ pressed }) => [
+            IndexStyle.loginButton, pressed && IndexStyle.loginButtonPressed
+          ]} >
+
+          <Text style={IndexStyle.loginText} >Login</Text>
+        </Pressable>
 
         {msg ? (
           <Text style={{
               color: msg === 'Login Successfully' ? 'green' : 'red',
               marginTop: 10,
-              textAlign: 'center',}}>{msg}</Text>
+              textAlign: 'center',}}>
+                {msg}
+          </Text>
         ) : null}
         
       </View>
