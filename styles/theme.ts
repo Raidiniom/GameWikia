@@ -1,10 +1,10 @@
 import { StyleSheet } from "react-native";
 
 export const Colors = {
-  primary: '#d900ff',         // main background
+  primary: '#942fa6ff',         // main background
   secondary: '#4f46e5',       // buttons, accents
   accent: '#22c55e',          // highlights
-  background: '#d900ff',      // same as primary
+  background: '#FFE4E1',      // same as primary
   surface: '#ffffffaa',       // cards/forms
   text: '#000000ff',
   mutedText: '#cccccc',
