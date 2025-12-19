@@ -1,10 +1,8 @@
-import { GlobalStyles } from "@/styles/theme";
-import React from 'react';
 import { Text, View } from 'react-native';
 
 export default function homepage() {
   return (
-    <View style={GlobalStyles.container}>
+    <View>
       <Text>homepage</Text>
     </View>
   )

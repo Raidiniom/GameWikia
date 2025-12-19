@@ -1,4 +1,3 @@
-import { Colors, GlobalStyles, UIStyles } from "@/styles/theme";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
@@ -28,31 +27,27 @@ export default function Index() {
   }
 
   return (
-    <View style={GlobalStyles.container}>
-      <Text style={GlobalStyles.titleText}>Welcome to GameWikia</Text>
+    <View>
+      <Text >Welcome to GameWikia</Text>
 
-      <View style={UIStyles.container}>
+      <View>
         <TextInput 
-          style={UIStyles.textInput}
           placeholder="Username"
-          placeholderTextColor={Colors.mutedText}
 
           value={username}
           onChangeText={setUsername}
         />
         
         <TextInput 
-          style={UIStyles.textInput}
           placeholder="Password"
-          placeholderTextColor={Colors.mutedText}
 
           value={password}
           onChangeText={setPassword}
           secureTextEntry
         />
 
-        <TouchableOpacity style={UIStyles.loginButton} onPress={handleLogin}>
-          <Text style={UIStyles.loginButtonText}>Login</Text>
+        <TouchableOpacity onPress={handleLogin}>
+          <Text>Login</Text>
         </TouchableOpacity>
 
         {msg ? (
