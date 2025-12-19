@@ -1,4 +1,6 @@
 app-example/
+.expo
+.vscode
 
 # Logs
 logs
@@ -145,6 +147,3 @@ vite.config.ts.timestamp-*
 
 expo-env.d.ts
 # @end expo-cli
-
-.expo/
-.expo
