@@ -1,3 +1,4 @@
+import { HomeStyle } from "@/styles/screens/homestyle";
 import { Href, useRouter } from "expo-router";
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 
@@ -28,7 +29,7 @@ export default function HomePage() {
   ]
 
   return (
-    <View>
+    <View style={HomeStyle.bodyContainer} >
       <Text>Homepage</Text>
 
       <ScrollView>
