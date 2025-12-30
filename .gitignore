@@ -1,8 +1,8 @@
 app-example/
-.expo/
-.expo
-.vscode/
-.vscode
+*.expo/
+*.expo
+*.vscode/
+*.vscode
 
 # Logs
 logs
