@@ -59,11 +59,15 @@ export default function Index() {
         </Pressable>
 
         {msg ? (
-          <Text style={{
-              color: msg === 'Login Successfully' ? 'green' : 'red',
-              marginTop: 10,
-              textAlign: 'center',}}>
-                {msg}
+          <Text
+            style={[
+              IndexStyle.messageText,
+              msg === 'Login Successfully'
+                ? IndexStyle.successText
+                : IndexStyle.errorText,
+            ]}
+          >
+            {msg}
           </Text>
         ) : null}
         
