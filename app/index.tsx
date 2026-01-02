@@ -1,13 +1,16 @@
+import { IndexStyle } from "@/styles/indexstyle";
+import { Colors } from "@/styles/theme";
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Pressable, Text, TextInput, View } from "react-native";
+
 
 export default function Index() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [msg, setMsg] = useState('');
+  const [msg, setMsg] = useState('')
 
-  const router = useRouter();
+  const router = useRouter()
 
   const handleMsg = (success: boolean) => {
     if (success) {
@@ -22,39 +25,73 @@ export default function Index() {
     handleMsg(success)
 
     if (success) {
-      router.push('/pages/homepage')
+      router.push('/homepage')
     }
   }
 
+  const goToRegister = () => {
+    router.push('/register')
+  }
+
   return (
-    <View>
-      <Text >Welcome to GameWikia</Text>
+    <View style={IndexStyle.bodyContainer} >
+      <View style={IndexStyle.loginForm} >
+        <Text style={IndexStyle.welcomeText} >Welcome to GameWikia</Text>
 
-      <View>
-        <TextInput 
-          placeholder="Username"
-
+        <TextInput style={IndexStyle.userInput}
+          placeholder="gamewikireader"
+          placeholderTextColor={`${Colors.vanilla_custard}80`}
           value={username}
           onChangeText={setUsername}
         />
         
-        <TextInput 
-          placeholder="Password"
-
+        <TextInput style={IndexStyle.userInput}
+          placeholder="12345678"
+          placeholderTextColor={`${Colors.vanilla_custard}80`}
           value={password}
           onChangeText={setPassword}
           secureTextEntry
         />
 
-        <TouchableOpacity onPress={handleLogin}>
-          <Text>Login</Text>
-        </TouchableOpacity>
+        <Pressable 
+          onPress={handleLogin}
+          style={({ pressed }) => [
+            IndexStyle.loginButton, pressed && IndexStyle.loginButtonPressed
+          ]} >
+
+          <Text style={IndexStyle.loginText} >Login</Text>
+        </Pressable>
+
+        <Pressable 
+          onPress={goToRegister}
+          style={({ pressed }) => [
+            { 
+              padding: 10,
+              marginTop: 10,
+              opacity: pressed ? 0.7 : 1
+            }
+          ]}
+        >
+          <Text style={{ 
+            color: Colors.vanilla_custard,
+            textAlign: 'center',
+            textDecorationLine: 'underline'
+          }}>
+            Don't have an Account? Sign Up Now!
+          </Text>
+        </Pressable>
 
         {msg ? (
-          <Text style={{
-              color: msg === 'Login Successfully' ? 'green' : 'red',
-              marginTop: 10,
-              textAlign: 'center',}}>{msg}</Text>
+          <Text
+            style={[
+              IndexStyle.messageText,
+              msg === 'Login Successfully'
+                ? IndexStyle.successText
+                : IndexStyle.errorText,
+            ]}
+          >
+            {msg}
+          </Text>
         ) : null}
         
       </View>
