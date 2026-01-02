@@ -1,10 +1,30 @@
 import { AlStyle } from "@/styles/screens/alstyle";
-import { ScrollView, Text } from "react-native";
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import GameBar from "../components/gamebar";
 
 export default function AzurLane() {
     return (
-        <ScrollView style={AlStyle.bodyContainer} >
+        <View style={AlStyle.bodyContainer} >
             <Text>Azur Lane</Text>
-        </ScrollView>
+
+            <View>
+                <ScrollView 
+                    contentContainerStyle={{ gap: 10 }}
+                >
+                    <Text>Announcement</Text>
+                    <Text>Announcement</Text>
+                    <Text>Announcement</Text>
+                    <Text>Announcement</Text>
+                    <Text>Announcement</Text>
+                    <Text>Announcement</Text>
+                    <Text>Announcement</Text>
+                    <Text>Announcement</Text>
+                    <Text>Announcement</Text>
+                    <Text>Announcement</Text>
+                    <Text>Announcement</Text>
+                    <Text>Announcement</Text>
+                </ScrollView>
+            </View>
+        </View>
     );
 }
