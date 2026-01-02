@@ -8,9 +8,9 @@ import { Pressable, Text, TextInput, View } from "react-native";
 export default function Index() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [msg, setMsg] = useState('');
+  const [msg, setMsg] = useState('')
 
-  const router = useRouter();
+  const router = useRouter()
 
   const handleMsg = (success: boolean) => {
     if (success) {
@@ -27,6 +27,10 @@ export default function Index() {
     if (success) {
       router.push('/homepage')
     }
+  }
+
+  const goToRegister = () => {
+    router.push('/register')
   }
 
   return (
@@ -56,6 +60,25 @@ export default function Index() {
           ]} >
 
           <Text style={IndexStyle.loginText} >Login</Text>
+        </Pressable>
+
+        <Pressable 
+          onPress={goToRegister}
+          style={({ pressed }) => [
+            { 
+              padding: 10,
+              marginTop: 10,
+              opacity: pressed ? 0.7 : 1
+            }
+          ]}
+        >
+          <Text style={{ 
+            color: Colors.vanilla_custard,
+            textAlign: 'center',
+            textDecorationLine: 'underline'
+          }}>
+            Don't have an Account? Sign Up Now!
+          </Text>
         </Pressable>
 
         {msg ? (
