@@ -1,6 +1,5 @@
 import { AlStyle } from "@/styles/screens/alstyle";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
-import GameBar from "../components/gamebar";
 
 export default function AzurLane() {
     return (
