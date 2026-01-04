@@ -1,18 +1,20 @@
 import { Colors } from "@/styles/theme";
-import { StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View, ImageSourcePropType } from "react-native";
 
 interface GameBarProps {
-  title: string;
+  image: ImageSourcePropType,
+  title: string;    
   description: string;
 }
 
-const GameBar = ({ title, description }: GameBarProps) => {
+const GameBar = ({ image, title, description }: GameBarProps) => {
     
     return (
-        <View style={styles.container} >
-            <Text style={styles.title} >{title}</Text>
-            <Text style={styles.description} >{description}</Text>
-        </View>
+      <View style={styles.container} >
+        <Image source={image} style={styles.image} />
+        <Text style={styles.title} >{title}</Text>
+        <Text style={styles.description} >{description}</Text>
+      </View>
     )
 }
 
@@ -37,6 +39,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 20,
     opacity: 0.9,
+  },
+  image: {
+    width: 64,
+    height: 64,
+    borderRadius: 8,
+    marginBottom: 8,
   },
 });
 
