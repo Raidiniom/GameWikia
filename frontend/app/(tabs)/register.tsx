@@ -4,6 +4,8 @@ import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Pressable, Text, TextInput, View } from "react-native";
 
+import { supabase } from '@/lib/supabase'
+
 export default function Register() {
     const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
@@ -103,8 +105,7 @@ export default function Register() {
         setMsg(message);
     }
 
-    const handleRegister = () => {
-        // Basic validation
+    const handleRegister = async () => {
         if (!email || !username || !password || !confirm) {
             handleMsg(false, "All fields are required!");
             return;
@@ -120,13 +121,20 @@ export default function Register() {
             return;
         }
 
-        // If all validations pass
-        handleMsg(true, "Registration successful!");
+        const { data, error } = await supabase.auth.signUp({
+            email: email,
+            password: password,
+            options: {
+                data: {
+                    username: username,
+                },
+            },
+        })
         
-        // Simulate API call delay
-        setTimeout(() => {
+        if (data) {
+            handleMsg(true, "Registration successful! Please check your email to verify your account.");
             router.push('/');
-        }, 1500);
+        }
     }
 
     const RequirementCheck = ({ label, met }: { label: string; met: boolean }) => {
