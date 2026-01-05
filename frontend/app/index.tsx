@@ -1,3 +1,4 @@
+import { supabase } from "@/lib/supabase";
 import { IndexStyle } from "@/styles/indexstyle";
 import { Colors } from "@/styles/theme";
 import { useRouter } from "expo-router";
@@ -6,27 +7,34 @@ import { Pressable, Text, TextInput, View } from "react-native";
 
 
 export default function Index() {
-  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [msg, setMsg] = useState('')
 
   const router = useRouter()
 
-  const handleMsg = (success: boolean) => {
-    if (success) {
-      setMsg('Login Successfully')
-    } else {
-      setMsg('Ivalid Credentials')
+  const handleLogin = async () => {
+    if (!email || !password) {
+      setMsg('All fields are required!')
     }
-  }
+    
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password
+    })
 
-  const handleLogin = () => {
-    const success = username === 'Admin' && password === 'Admin'
-    handleMsg(success)
-
-    if (success) {
-      router.push('/homepage')
+    if (error) {
+        if (error.code === 'email_not_confirmed') {
+            setMsg('Please confirm your email before logging in.')
+        } else {
+            setMsg(error.message)
+        }
+        
+        return
     }
+
+        setMsg('Login successful')
+        router.push('/homepage')
   }
 
   const goToRegister = () => {
@@ -39,10 +47,10 @@ export default function Index() {
         <Text style={IndexStyle.welcomeText} >Welcome to GameWikia</Text>
 
         <TextInput style={IndexStyle.userInput}
-          placeholder="gamewikireader"
+          placeholder="gamewikireader@email.com"
           placeholderTextColor={`${Colors.vanilla_custard}80`}
-          value={username}
-          onChangeText={setUsername}
+          value={email}
+          onChangeText={setEmail}
         />
         
         <TextInput style={IndexStyle.userInput}
