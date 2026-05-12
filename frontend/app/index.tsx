@@ -46,6 +46,19 @@ export default function Index() {
       <View style={IndexStyle.loginForm} >
         <Text style={IndexStyle.welcomeText} >Welcome to GameWikia</Text>
 
+        {msg ? (
+          <Text
+            style={[
+              IndexStyle.messageText,
+              msg === 'Login Successfully'
+                ? IndexStyle.successText
+                : IndexStyle.errorText,
+            ]}
+          >
+            {msg}
+          </Text>
+        ) : null}
+
         <TextInput style={IndexStyle.userInput}
           placeholder="gamewikireader@email.com"
           placeholderTextColor={`${Colors.vanilla_custard}80`}
@@ -88,20 +101,6 @@ export default function Index() {
             Don't have an Account? Sign Up Now!
           </Text>
         </Pressable>
-
-        {msg ? (
-          <Text
-            style={[
-              IndexStyle.messageText,
-              msg === 'Login Successfully'
-                ? IndexStyle.successText
-                : IndexStyle.errorText,
-            ]}
-          >
-            {msg}
-          </Text>
-        ) : null}
-        
       </View>
     </View>
 
