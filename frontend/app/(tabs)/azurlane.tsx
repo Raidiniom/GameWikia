@@ -12,9 +12,8 @@ export default function AzurLane() {
       infoTabs={[
         { title: 'News & Events',       page: '../(subtabs)/azurlane/news' as Href,     icon: '📰' },
         { title: 'Campaign Guide',      page: '../(subtabs)/azurlane/campaign' as Href, icon: '🗺️' },
-        { title: 'Gameplay Mechanics',  page: '/alcontent' as Href,                     icon: '🎮' },
+        { title: 'Gameplay Mechanics',  page: '../(subtabs)/azurlane/gameplay' as Href,         icon: '🎮' },
         { title: 'Factions',            page: '../(subtabs)/azurlane/factions' as Href, icon: '🚩' },
-        { title: 'Ship Collection',     page: '../(subtabs)/azurlane/' as Href,         icon: '⚓' },
         { title: 'Equipment Guide',     page: '../(subtabs)/azurlane/' as Href,         icon: '🔧' },
         { title: 'Combat Tips',         page: '../(subtabs)/azurlane/' as Href,         icon: '🛡️' },
       ]}
