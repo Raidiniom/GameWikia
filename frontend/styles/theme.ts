@@ -1,26 +1,28 @@
 export const Colors = {
-  // Background colors
-  ink_black: '#001219ff',
-  dark_teal: '#005f73ff',
-  dark_cyan: '#0a9396ff',
+  // Backgrounds — deep navy-teal stack
+  ink_black: '#0d1b1e',       // page bg (was #001219)
+  dark_teal: '#112228',       // card / surface bg (was #005f73)
+  dark_cyan: '#162e35',       // input bg (was #0a9396)
 
-  // Text colors
-  pearl_aqua: '#94d2bdff',
-  vanilla_custard: '#e9d8a6ff',
+  // Text
+  pearl_aqua: '#7bbfb0',      // secondary text (was #94d2bd)
+  vanilla_custard: '#c8e6d8', // primary text  (was #e9d8a6)
 
-  // Interactive colors
+  // Interactive
   golden_orange: '#ee9b00ff',
 
-  // Emphasis / Highlight / Status
-  burnt_caramel: '#ca6702ff',  // warning
-  rusty_spice: '#bb3e03ff',    // critical
-  oxidized_iron: '#ae2012ff',  // danger
-  brown_red: '#9b2226ff',      // error
-  deep_emerald: '#0f766eff',   // dark success / confirmed
-  jade_green: '#2a9d8fff',     // primary success / active
-  sea_green: '#52b69aff',      // secondary success / positive
-  soft_sage: '#94d2bdff',      // subtle success / passive (matches pearl_aqua)
-  mint_highlight: '#c7f9ccff', // highlights, tags, badges
+  // Emphasis / Status
+  burnt_caramel: '#ca6702ff',
+  rusty_spice: '#bb3e03ff',
+  oxidized_iron: '#ae2012ff',
+  brown_red: '#9b2226ff',
+  deep_emerald: '#0f766eff',
+  jade_green: '#1f7a64',      // primary accent / left-border green
+  sea_green: '#52b69aff',
+  soft_sage: '#1e3c40',       // input border
+  mint_highlight: '#5dcaa5',  // bright accent (badges, tabs)
+  dark_card_border: '#1e3c40',
+  accent_green: '#1f7a64',
 };
 
 export const AzurLane = {
