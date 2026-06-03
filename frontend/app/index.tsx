@@ -1,108 +1,111 @@
 import { supabase } from "@/lib/supabase";
 import { IndexStyle } from "@/styles/indexstyle";
-import { Colors } from "@/styles/theme";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Pressable, Text, TextInput, View } from "react-native";
 
-
 export default function Index() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [msg, setMsg] = useState('')
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [msg, setMsg] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
 
-  const router = useRouter()
+  const router = useRouter();
 
   const handleLogin = async () => {
     if (!email || !password) {
-      setMsg('All fields are required!')
+      setIsSuccess(false);
+      setMsg('All fields are required!');
+      return;
     }
-    
+
     const { data, error } = await supabase.auth.signInWithPassword({
-      email: email,
-      password: password
-    })
+      email,
+      password,
+    });
 
     if (error) {
-        if (error.code === 'email_not_confirmed') {
-            setMsg('Please confirm your email before logging in.')
-        } else {
-            setMsg(error.message)
-        }
-        
-        return
+      setIsSuccess(false);
+      if (error.code === 'email_not_confirmed') {
+        setMsg('Please confirm your email before logging in.');
+      } else {
+        setMsg(error.message);
+      }
+      return;
     }
 
-        setMsg('Login successful')
-        router.push('/homepage')
-  }
-
-  const goToRegister = () => {
-    router.push('/register')
-  }
+    setIsSuccess(true);
+    setMsg('Login successful');
+    router.push('/homepage');
+  };
 
   return (
-    <View style={IndexStyle.bodyContainer} >
-      <View style={IndexStyle.loginForm} >
-        <Text style={IndexStyle.welcomeText} >Welcome to GameWikia</Text>
+    <View style={IndexStyle.bodyContainer}>
+
+      {/* Logo */}
+      <View style={IndexStyle.logoContainer}>
+        <View style={IndexStyle.logoBox}>
+          <Text style={IndexStyle.logoText}>🎮</Text>
+        </View>
+        <Text style={IndexStyle.appTitle}>GameWikia</Text>
+        <Text style={IndexStyle.appSubtitle}>Your gacha companion</Text>
+      </View>
+
+      {/* Form */}
+      <View style={IndexStyle.loginForm}>
 
         {msg ? (
-          <Text
-            style={[
-              IndexStyle.messageText,
-              msg === 'Login Successfully'
-                ? IndexStyle.successText
-                : IndexStyle.errorText,
-            ]}
-          >
+          <Text style={[
+            IndexStyle.messageText,
+            isSuccess ? IndexStyle.successText : IndexStyle.errorText,
+          ]}>
             {msg}
           </Text>
         ) : null}
 
-        <TextInput style={IndexStyle.userInput}
+        <Text style={IndexStyle.fieldLabel}>Email</Text>
+        <TextInput
+          style={IndexStyle.userInput}
           placeholder="gamewikireader@email.com"
-          placeholderTextColor={`${Colors.vanilla_custard}80`}
+          placeholderTextColor="#4a998580"
           value={email}
           onChangeText={setEmail}
+          autoCapitalize="none"
+          keyboardType="email-address"
         />
-        
-        <TextInput style={IndexStyle.userInput}
-          placeholder="12345678"
-          placeholderTextColor={`${Colors.vanilla_custard}80`}
+
+        <Text style={IndexStyle.fieldLabel}>Password</Text>
+        <TextInput
+          style={IndexStyle.userInput}
+          placeholder="Enter your password"
+          placeholderTextColor="#4a998580"
           value={password}
           onChangeText={setPassword}
           secureTextEntry
         />
 
-        <Pressable 
+        <Pressable
           onPress={handleLogin}
           style={({ pressed }) => [
-            IndexStyle.loginButton, pressed && IndexStyle.loginButtonPressed
-          ]} >
-
-          <Text style={IndexStyle.loginText} >Login</Text>
-        </Pressable>
-
-        <Pressable 
-          onPress={goToRegister}
-          style={({ pressed }) => [
-            { 
-              padding: 10,
-              marginTop: 10,
-              opacity: pressed ? 0.7 : 1
-            }
+            IndexStyle.loginButton,
+            pressed && IndexStyle.loginButtonPressed,
           ]}
         >
-          <Text style={{ 
-            color: Colors.vanilla_custard,
-            textAlign: 'center',
-            textDecorationLine: 'underline'
-          }}>
-            Don't have an Account? Sign Up Now!
-          </Text>
+          <Text style={IndexStyle.loginText}>Log in</Text>
         </Pressable>
+
+        {/* Feature to be Implemented */}
+        {/* <Pressable onPress={() => router.push('/recoverpass')}>
+          <Text style={IndexStyle.forgotText}>Forgot password?</Text>
+        </Pressable> */}
+
+        <View style={IndexStyle.divider} />
+
+        <Pressable onPress={() => router.push('/register')}>
+          <Text style={IndexStyle.registerLink}>New here? Create an account</Text>
+        </Pressable>
+
       </View>
     </View>
-
   );
 }
