@@ -3,6 +3,7 @@ import { Colors } from "@/styles/theme";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Pressable, Text, TextInput, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import { supabase } from '@/lib/supabase'
 
@@ -139,7 +140,7 @@ export default function Register() {
 
     const RequirementCheck = ({ label, met }: { label: string; met: boolean }) => {
         return (
-            <View style={RegisterStyle.requirementItem}>
+            <SafeAreaView style={RegisterStyle.requirementItem} edges={['top', 'bottom']} >
                 <View style={[
                     RegisterStyle.requirementIndicator,
                     { backgroundColor: met ? Colors.jade_green : Colors.brown_red }
@@ -158,7 +159,7 @@ export default function Register() {
                 ]}>
                     {label}
                 </Text>
-            </View>
+            </SafeAreaView>
         );
     };
 

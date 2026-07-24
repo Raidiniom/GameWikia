@@ -1,5 +1,6 @@
 import GameDetailScreen from "../components/gamedetailscreen";
 import { Href } from "expo-router";
+import { GameThemes } from "@/styles/theme";
 
 export default function BlueArchive() {
   return (
@@ -8,6 +9,7 @@ export default function BlueArchive() {
       tag="Tactical RPG · Squad Combat"
       emoji="📚"
       image={require('../../assets/images/game_icon/blue_archive.jpg')}
+      theme={GameThemes.bluearchive}
       tabs={['Guide', 'Students', 'Events', 'Tips']}
       infoTabs={[
         { title: 'News & Events',     page: '/ba/news' as Href,      icon: '📰' },

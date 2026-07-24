@@ -1,5 +1,6 @@
 import GameDetailScreen from "../components/gamedetailscreen";
 import { Href } from "expo-router";
+import { GameThemes } from "@/styles/theme";
 
 export default function HonkaiStarRail() {
   return (
@@ -8,6 +9,7 @@ export default function HonkaiStarRail() {
       tag="Turn-based · Sci-fi Fantasy"
       emoji="🚂"
       image={require('../../assets/images/game_icon/honkai_star_rail.jpg')}
+      theme={GameThemes.honkaistarrail}
       tabs={['Guide', 'Characters', 'Events', 'Tips']}
       infoTabs={[
         { title: 'News & Events',      page: '/hsr/news' as Href,        icon: '📰' },

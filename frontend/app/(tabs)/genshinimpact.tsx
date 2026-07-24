@@ -1,5 +1,6 @@
 import GameDetailScreen from "../components/gamedetailscreen";
 import { Href } from "expo-router";
+import { GameThemes } from "@/styles/theme";
 
 export default function GenshinImpact() {
   return (
@@ -8,6 +9,7 @@ export default function GenshinImpact() {
       tag="Open-world RPG · Elemental Combat"
       emoji="🌸"
       image={require('../../assets/images/game_icon/genshin_impact.jpg')}
+      theme={GameThemes.genshinimpact}
       tabs={['Guide', 'Characters', 'Events', 'Tips']}
       infoTabs={[
         { title: 'News & Events',      page: '/genshin/news' as Href,       icon: '📰' },

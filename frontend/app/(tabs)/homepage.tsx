@@ -5,6 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import GameBar from "../components/gamebar";
 import { supabase } from "@/lib/supabase";
 import { useEffect, useState } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomePage() {
   const router = useRouter();
@@ -78,7 +79,7 @@ export default function HomePage() {
   ];
 
   return (
-    <View style={HomeStyle.bodyContainer}>
+    <SafeAreaView style={HomeStyle.bodyContainer} edges={['top', 'bottom']} >
 
       {/* Header */}
       <View style={HomeStyle.headerRow}>
@@ -119,6 +120,6 @@ export default function HomePage() {
           </TouchableOpacity>
         ))}
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }

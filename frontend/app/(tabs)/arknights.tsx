@@ -1,5 +1,6 @@
 import GameDetailScreen from "../components/gamedetailscreen";
 import { Href } from "expo-router";
+import { GameThemes } from "@/styles/theme";
 
 export default function Arknights() {
   return (
@@ -8,6 +9,7 @@ export default function Arknights() {
       tag="Tower Defense · Sci-fi Story"
       emoji="🐾"
       image={require('../../assets/images/game_icon/arknights.png')}
+      theme={GameThemes.arknights}
       tabs={['Guide', 'Operators', 'Events', 'Tips']}
       infoTabs={[
         { title: 'News & Events',    page: '/ak/news' as Href,       icon: '📰' },

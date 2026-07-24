@@ -1,5 +1,6 @@
 import GameDetailScreen from "../components/gamedetailscreen";
 import { Href } from "expo-router";
+import { GameThemes } from "@/styles/theme";
 
 export default function UmamusumePrettyDerby() {
   return (
@@ -8,6 +9,7 @@ export default function UmamusumePrettyDerby() {
       tag="Training Sim · Horse Racing"
       emoji="🐎"
       image={require('../../assets/images/game_icon/umamusume_pretty_derby.png')}
+      theme={GameThemes.umamusumeprettyderby}
       tabs={['Guide', 'Uma-musume', 'Events', 'Tips']}
       infoTabs={[
         { title: 'News & Events',      page: '/uma/news' as Href,        icon: '📰' },

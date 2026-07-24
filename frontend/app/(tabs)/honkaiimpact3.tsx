@@ -1,5 +1,6 @@
 import GameDetailScreen from "../components/gamedetailscreen";
 import { Href } from "expo-router";
+import { GameThemes } from "@/styles/theme";
 
 export default function HonkaiImpact3() {
   return (
@@ -8,6 +9,7 @@ export default function HonkaiImpact3() {
       tag="Action RPG · Hack-and-slash"
       emoji="⚡"
       image={require('../../assets/images/game_icon/honkai_impact_3rd.jpg')}
+      theme={GameThemes.honkaiimpact3rd}
       tabs={['Guide', 'Valkyries', 'Events', 'Tips']}
       infoTabs={[
         { title: 'News & Events',     page: '/hi3/news' as Href,       icon: '📰' },

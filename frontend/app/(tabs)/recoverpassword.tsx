@@ -3,6 +3,7 @@ import { IndexStyle } from "@/styles/indexstyle";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Pressable, Text, TextInput, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function RecoverPassword() {
   const [email, setEmail] = useState('');
@@ -39,7 +40,7 @@ export default function RecoverPassword() {
   };
 
   return (
-    <View style={IndexStyle.bodyContainer}>
+    <SafeAreaView style={IndexStyle.bodyContainer} edges={['top', 'bottom']} >
       <View style={IndexStyle.loginForm}>
         <Text style={IndexStyle.appTitle}>Forgot Password</Text>
         <Text style={IndexStyle.appSubtitle}>
@@ -84,6 +85,6 @@ export default function RecoverPassword() {
           <Text style={IndexStyle.forgotText}>Back to login</Text>
         </Pressable>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }

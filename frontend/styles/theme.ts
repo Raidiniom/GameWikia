@@ -101,3 +101,80 @@ export const Arknights = {
   sterile_white: '#e5e7ebff',
   ash_gray: '#6b7280ff',
 };
+
+// --- Shared theme contract for game detail screens ---
+export interface GameThemeColors {
+  background: string;
+  surface: string;
+  border: string;
+  accent: string;
+  accentSoft: string; // accent w/ alpha, used for pressed/placeholder bg
+  textPrimary: string;
+  textSecondary: string;
+}
+
+export const GameThemes: Record<string, GameThemeColors> = {
+  azurlane: {
+    background: AzurLane.abyss_black,
+    surface: AzurLane.naval_blue,
+    border: AzurLane.steel_blue,
+    accent: AzurLane.ocean_cyan,
+    accentSoft: `${AzurLane.ocean_cyan}30`,
+    textPrimary: AzurLane.mist_white,
+    textSecondary: AzurLane.hull_gray,
+  },
+  genshinimpact: {
+    background: GenshinImpact.midnight_sky,
+    surface: GenshinImpact.deep_azure,
+    border: GenshinImpact.sky_blue,
+    accent: GenshinImpact.vision_teal,
+    accentSoft: `${GenshinImpact.vision_teal}30`,
+    textPrimary: GenshinImpact.cloud_white,
+    textSecondary: GenshinImpact.wind_glow,
+  },
+  honkaiimpact3rd: {
+    background: HonkaiImpact3rd.void_black,
+    surface: HonkaiImpact3rd.mech_gray,
+    border: HonkaiImpact3rd.alloy_silver,
+    accent: HonkaiImpact3rd.plasma_cyan,
+    accentSoft: `${HonkaiImpact3rd.plasma_cyan}30`,
+    textPrimary: HonkaiImpact3rd.light_white,
+    textSecondary: HonkaiImpact3rd.alloy_silver,
+  },
+  honkaistarrail: {
+    background: HonkaiStarRail.cosmic_black,
+    surface: HonkaiStarRail.nebula_indigo,
+    border: HonkaiStarRail.void_gray,
+    accent: HonkaiStarRail.starlight_cyan,
+    accentSoft: `${HonkaiStarRail.starlight_cyan}30`,
+    textPrimary: HonkaiStarRail.stellar_white,
+    textSecondary: HonkaiStarRail.void_gray,
+  },
+  umamusumeprettyderby: {
+    background: UmamusumePrettyDerby.midnight_track,
+    surface: UmamusumePrettyDerby.race_blue,
+    border: UmamusumePrettyDerby.sky_cyan,
+    accent: UmamusumePrettyDerby.idol_pink,
+    accentSoft: `${UmamusumePrettyDerby.idol_pink}30`,
+    textPrimary: UmamusumePrettyDerby.soft_white,
+    textSecondary: UmamusumePrettyDerby.sky_cyan,
+  },
+  bluearchive: {
+    background: BlueArchive.academy_navy,
+    surface: BlueArchive.class_blue,
+    border: BlueArchive.soft_sky,
+    accent: BlueArchive.calm_cyan,
+    accentSoft: `${BlueArchive.calm_cyan}30`,
+    textPrimary: BlueArchive.chalk_white,
+    textSecondary: BlueArchive.desk_gray,
+  },
+  arknights: {
+    background: Arknights.obsidian_black,
+    surface: Arknights.industrial_gray,
+    border: Arknights.steel_blue,
+    accent: Arknights.operator_teal,
+    accentSoft: `${Arknights.operator_teal}30`,
+    textPrimary: Arknights.sterile_white,
+    textSecondary: Arknights.ash_gray,
+  },
+};

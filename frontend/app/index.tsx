@@ -3,6 +3,7 @@ import { IndexStyle } from "@/styles/indexstyle";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Pressable, Text, TextInput, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
   const [email, setEmail] = useState('');
@@ -40,7 +41,7 @@ export default function Index() {
   };
 
   return (
-    <View style={IndexStyle.bodyContainer}>
+    <SafeAreaView style={IndexStyle.bodyContainer} edges={['top', 'bottom']}>
 
       {/* Logo */}
       <View style={IndexStyle.logoContainer}>
@@ -105,6 +106,6 @@ export default function Index() {
         </Pressable>
 
       </View>
-    </View>
+    </SafeAreaView>
   );
 }

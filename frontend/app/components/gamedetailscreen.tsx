@@ -1,6 +1,7 @@
-import { GameDetailStyle } from "../../styles/components/gamedetailstyle";
+import { createGameDetailStyle } from "../../styles/components/gamedetailstyle";
+import { GameThemeColors } from "../../styles/theme";
 import { Href, useRouter } from "expo-router";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import {
   Image,
   ImageSourcePropType,
@@ -10,20 +11,22 @@ import {
   View,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export interface InfoTab {
   title: string;
   page: Href;
-  icon: string; // emoji
+  icon: string;
 }
 
 export interface GameDetailScreenProps {
   title: string;
-  tag: string;           // e.g. "Naval · Gacha · 2D"
-  emoji: string;         // fallback icon if no image
+  tag: string;
+  emoji: string;
   image?: ImageSourcePropType;
-  tabs?: string[];       // tab bar labels, defaults to Guide/Characters/Events/Tips
+  tabs?: string[];
   infoTabs: InfoTab[];
+  theme: GameThemeColors; // NEW — required, drives all the colors below
 }
 
 export default function GameDetailScreen({
@@ -33,17 +36,18 @@ export default function GameDetailScreen({
   image,
   tabs = ['Guide', 'Characters', 'Events', 'Tips'],
   infoTabs,
+  theme,
 }: GameDetailScreenProps) {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState(0);
+  const GameDetailStyle = useMemo(() => createGameDetailStyle(theme), [theme]);
 
   return (
-    <View style={GameDetailStyle.bodyContainer}>
-
+    <SafeAreaView style={GameDetailStyle.bodyContainer} edges={['top', 'bottom']} >
       {/* Hero */}
       <View style={GameDetailStyle.hero}>
         <Pressable style={GameDetailStyle.backRow} onPress={() => router.back()}>
-          <Ionicons name="chevron-back" size={16} color="#7bbfb0" />
+          <Ionicons name="chevron-back" size={16} color={theme.accent} />
           <Text style={GameDetailStyle.backText}>Back</Text>
         </Pressable>
 
@@ -100,6 +104,6 @@ export default function GameDetailScreen({
           </Pressable>
         ))}
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
