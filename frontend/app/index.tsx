@@ -39,6 +39,27 @@ export default function Index() {
     router.push('/homepage');
   };
 
+  const handleRecoverPass = async () => {
+    if (!email) {
+      setIsSuccess(false)
+      setMsg('Please enter your email to reset your password')
+      return
+    }
+
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: 'gamewikia://recoverpass'
+    })
+
+    if (error) {
+      setIsSuccess(false);
+      setMsg(error.message);
+      return;
+    }
+
+    setIsSuccess(true);
+    setMsg('Check your email for a password reset link.');
+  };
+
   return (
     <View style={IndexStyle.bodyContainer}>
 
@@ -95,9 +116,9 @@ export default function Index() {
         </Pressable>
 
         {/* Feature to be Implemented */}
-        {/* <Pressable onPress={() => router.push('/recoverpass')}>
+        <Pressable onPress={handleRecoverPass}>
           <Text style={IndexStyle.forgotText}>Forgot password?</Text>
-        </Pressable> */}
+        </Pressable>
 
         <View style={IndexStyle.divider} />
 
