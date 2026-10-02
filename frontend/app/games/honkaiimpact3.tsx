@@ -1,4 +1,4 @@
-import GameDetailScreen from "../components/gamedetailscreen";
+import GameDetailScreen from "@/components/gamedetailscreen";
 import { Href } from "expo-router";
 import { GameThemes } from "@/styles/theme";
 
@@ -10,7 +10,7 @@ export default function HonkaiImpact3() {
       emoji="⚡"
       image={require('../../assets/images/game_icon/honkai_impact_3rd.jpg')}
       theme={GameThemes.honkaiimpact3rd}
-      tabs={['Guide', 'Valkyries', 'Events', 'Tips']}
+      tabs={['Guide', 'Valkyries', 'Events']}
       infoTabs={[
         { title: 'News & Events',     page: '/hi3/news' as Href,       icon: '📰' },
         { title: 'Valkyrie Guide',    page: '/hi3/valkyries' as Href,  icon: '⚡' },

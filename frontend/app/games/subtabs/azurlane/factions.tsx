@@ -28,14 +28,15 @@ export default function Factions() {
             <View style={ALFaction.factionContainer}>
                 <ScrollView>
                     <View style={ALFaction.gridContainer}>
-                        {faction_list.map((index) => (
+                        {faction_list.map((faction) => (
                             <TouchableOpacity
+                                key={faction}
                                 style={ALFaction.factionCard}
                             >
                                 <Image 
                                     style={ALFaction.imageStyle} 
                                 />
-                                <Text style={ALFaction.textStyle}>{index}</Text>
+                                <Text style={ALFaction.textStyle}>{faction}</Text>
                             </TouchableOpacity>
                         ))}
                     </View>

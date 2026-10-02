@@ -5,8 +5,6 @@ import { useState } from "react";
 import { Pressable, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { supabase } from '@/lib/supabase'
-
 export default function Register() {
     const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
@@ -121,21 +119,9 @@ export default function Register() {
             handleMsg(false, "Password is too weak! Please use a stronger password.");
             return;
         }
-
-        const { data, error } = await supabase.auth.signUp({
-            email: email,
-            password: password,
-            options: {
-                data: {
-                    username: username,
-                },
-            },
-        })
         
-        if (data) {
-            handleMsg(true, "Registration successful! Please check your email to verify your account.");
-            router.push('/');
-        }
+        handleMsg(true, "Registration successful! Please check your email to verify your account.");
+        router.push('/');
     }
 
     const RequirementCheck = ({ label, met }: { label: string; met: boolean }) => {
@@ -168,6 +154,7 @@ export default function Register() {
             <View style={RegisterStyle.registerForm} >
                 <Text style={RegisterStyle.welcomeText} >Register</Text>
 
+                <Text>Email:</Text>
                 <TextInput style={RegisterStyle.userInput}
                     placeholder="gamewikireader@email.com"
                     placeholderTextColor={`${Colors.vanilla_custard}80`}
@@ -177,6 +164,7 @@ export default function Register() {
                     keyboardType="email-address"
                 />
 
+                <Text>Username:</Text>
                 <TextInput style={RegisterStyle.userInput}
                     placeholder="gamewikireader"
                     placeholderTextColor={`${Colors.vanilla_custard}80`}
@@ -185,6 +173,7 @@ export default function Register() {
                     autoCapitalize="none"
                 />
 
+                <Text>Password:</Text>
                 <TextInput style={RegisterStyle.userInput}
                     placeholder="Enter password"
                     placeholderTextColor={`${Colors.vanilla_custard}80`}

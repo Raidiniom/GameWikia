@@ -1,16 +1,16 @@
-import GameDetailScreen from "../components/gamedetailscreen";
+import GameDetailScreen from "@/components/gamedetailscreen";
 import { Href } from "expo-router";
 import { GameThemes } from "@/styles/theme";
 
-export default function Arknights() {
+export default function ArknightsEndfield() {
   return (
     <GameDetailScreen
-      title="Arknights"
-      tag="Tower Defense · Sci-fi Story"
+      title="Arknights Endfield"
+      tag="Open World · Sci-fi Story · Factory Building"
       emoji="🐾"
       image={require('../../assets/images/game_icon/arknights.png')}
       theme={GameThemes.arknights}
-      tabs={['Guide', 'Operators', 'Events', 'Tips']}
+      tabs={['Guide', 'Operators', 'Events']}
       infoTabs={[
         { title: 'News & Events',    page: '/ak/news' as Href,       icon: '📰' },
         { title: 'Operator Guide',   page: '/ak/operators' as Href,  icon: '🐾' },

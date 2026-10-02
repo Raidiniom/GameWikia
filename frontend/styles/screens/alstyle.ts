@@ -103,15 +103,15 @@ export const ALFaction = StyleSheet.create({
     gridContainer: {
         flexDirection: 'row',
         flexWrap: 'wrap',
-        gap: 10,
+        justifyContent: 'space-between',
+        rowGap: 10,
     },
     factionCard: {
+        width: '48%',
         backgroundColor: AzurLane.ocean_cyan,
         borderWidth: 2,
         borderColor: AzurLane.signal_yellow,
         borderRadius: 8,
-        flexWrap: 'wrap',
-        marginBottom: 15,
         alignItems: 'center',
         justifyContent: 'center',
         padding: 10,

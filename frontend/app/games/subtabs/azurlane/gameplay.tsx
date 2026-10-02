@@ -7,7 +7,7 @@ export default function Gameplay() {
     return (
         <ScrollView>
             <View>
-                <Text>Hello</Text>
+                <Text>Gameplay</Text>
             </View>
         </ScrollView>
     )

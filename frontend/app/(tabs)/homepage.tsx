@@ -2,8 +2,7 @@ import { HomeStyle } from "@/styles/screens/homestyle";
 import { Href, useRouter } from "expo-router";
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import GameBar from "../components/gamebar";
-import { supabase } from "@/lib/supabase";
+import GameBar from "../../components/gamebar";
 import { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -18,16 +17,11 @@ export default function HomePage() {
     else if (hour < 18) setGreeting('Good afternoon,');
     else setGreeting('Good evening,');
 
-    supabase.auth.getUser().then(({ data, error }) => {
-      if (error) {
-        console.warn('Failed to fetch user:', error.message);
-        return;
-      }
 
-      const name = data?.user?.user_metadata?.username;
-      // const name = 'testing123';
-      if (name) setUsername(name);
-    });
+
+    const name = 'testing123';
+    
+    if (name) setUsername(name);
   }, []);
 
   const avatarInitial = username ? username[0].toUpperCase() : '?';
@@ -37,44 +31,50 @@ export default function HomePage() {
       image: require('@/assets/images/game_icon/azur_lane.jpg'),
       title: 'Azur Lane',
       description: 'Naval shooter · Fleet building',
-      page: '/azurlane' as Href,
+      page: '/games/azurlane' as Href,
       badge: '',
     },
     {
       image: require('@/assets/images/game_icon/genshin_impact.jpg'),
       title: 'Genshin Impact',
       description: 'Open-world RPG · Elemental combat',
-      page: '/genshinimpact' as Href,
+      page: '/games/genshinimpact' as Href,
     },
     {
       image: require('@/assets/images/game_icon/honkai_impact_3rd.jpg'),
       title: 'Honkai Impact 3rd',
       description: 'Action · Hack-and-slash combat',
-      page: '/honkaiimpact3' as Href,
+      page: '/games/honkaiimpact3' as Href,
     },
     {
       image: require('@/assets/images/game_icon/honkai_star_rail.jpg'),
       title: 'Honkai: Star Rail',
       description: 'Turn-based · Sci-fi fantasy',
-      page: '/honkaistarrail' as Href,
+      page: '/games/honkaistarrail' as Href,
     },
     {
       image: require('@/assets/images/game_icon/umamusume_pretty_derby.png'),
       title: 'Umamusume Pretty Derby',
       description: 'Training sim · Horse racing',
-      page: '/umamusumeprettyderby' as Href,
+      page: '/games/umamusumeprettyderby' as Href,
     },
     {
       image: require('@/assets/images/game_icon/blue_archive.jpg'),
       title: 'Blue Archive',
       description: 'Tactical RPG · Squad combat',
-      page: '/bluearchive' as Href,
+      page: '/games/bluearchive' as Href,
     },
     {
       image: require('@/assets/images/game_icon/arknights.png'),
       title: 'Arknights',
       description: 'Tower defense · Sci-fi storytelling',
-      page: '/arknights' as Href,
+      page: '/games/arknights' as Href,
+    },
+    {
+      image: require('@/assets/images/game_icon/arknights.png'),
+      title: 'Arknights Endfield',
+      description: 'Open World · Sci-fi storytelling · Factory Building',
+      page: '/games/arknightsendfield' as Href,
     },
   ];
 

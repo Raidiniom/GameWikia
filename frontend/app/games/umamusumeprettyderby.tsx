@@ -1,4 +1,4 @@
-import GameDetailScreen from "../components/gamedetailscreen";
+import GameDetailScreen from "@/components/gamedetailscreen";
 import { Href } from "expo-router";
 import { GameThemes } from "@/styles/theme";
 
@@ -10,7 +10,7 @@ export default function UmamusumePrettyDerby() {
       emoji="🐎"
       image={require('../../assets/images/game_icon/umamusume_pretty_derby.png')}
       theme={GameThemes.umamusumeprettyderby}
-      tabs={['Guide', 'Uma-musume', 'Events', 'Tips']}
+      tabs={['Guide', 'Uma-musume', 'Events']}
       infoTabs={[
         { title: 'News & Events',      page: '/uma/news' as Href,        icon: '📰' },
         { title: 'Training Guide',     page: '/uma/training' as Href,    icon: '🏋️' },

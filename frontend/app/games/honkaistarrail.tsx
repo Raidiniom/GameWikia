@@ -1,4 +1,4 @@
-import GameDetailScreen from "../components/gamedetailscreen";
+import GameDetailScreen from "@/components/gamedetailscreen";
 import { Href } from "expo-router";
 import { GameThemes } from "@/styles/theme";
 
@@ -10,7 +10,7 @@ export default function HonkaiStarRail() {
       emoji="🚂"
       image={require('../../assets/images/game_icon/honkai_star_rail.jpg')}
       theme={GameThemes.honkaistarrail}
-      tabs={['Guide', 'Characters', 'Events', 'Tips']}
+      tabs={['Guide', 'Characters', 'Events']}
       infoTabs={[
         { title: 'News & Events',      page: '/hsr/news' as Href,        icon: '📰' },
         { title: 'Character Builds',   page: '/hsr/characters' as Href,  icon: '⚔️' },

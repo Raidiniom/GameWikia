@@ -1,5 +1,5 @@
-import { createGameDetailStyle } from "../../styles/components/gamedetailstyle";
-import { GameThemeColors } from "../../styles/theme";
+import { createGameDetailStyle } from "../styles/components/gamedetailstyle";
+import { GameThemeColors } from "../styles/theme";
 import { Href, useRouter } from "expo-router";
 import { useMemo, useState } from "react";
 import {
@@ -34,7 +34,7 @@ export default function GameDetailScreen({
   tag,
   emoji,
   image,
-  tabs = ['Guide', 'Characters', 'Events', 'Tips'],
+  tabs = ['Guide', 'Characters', 'Events'],
   infoTabs,
   theme,
 }: GameDetailScreenProps) {

@@ -1,4 +1,3 @@
-import { supabase } from "@/lib/supabase";
 import { IndexStyle } from "@/styles/indexstyle";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useState } from "react";
@@ -37,38 +36,6 @@ export default function ResetPassword() {
     }
 
     setLoading(true);
-
-    // Step 1: verify the OTP code, this creates a temporary recovery session
-    const { error: verifyError } = await supabase.auth.verifyOtp({
-      email,
-      token: otp,
-      type: 'recovery',
-    });
-
-    if (verifyError) {
-      setLoading(false);
-      setIsSuccess(false);
-      setMsg(verifyError.message);
-      return;
-    }
-
-    // Step 2: now that we have a session, update the password
-    const { error: updateError } = await supabase.auth.updateUser({
-      password: newPassword,
-    });
-
-    setLoading(false);
-
-    if (updateError) {
-      setIsSuccess(false);
-      setMsg(updateError.message);
-      return;
-    }
-
-    setIsSuccess(true);
-    setMsg('Password updated! Redirecting to login...');
-
-    await supabase.auth.signOut();
 
     setTimeout(() => {
       router.replace('/');

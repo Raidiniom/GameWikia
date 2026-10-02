@@ -1,4 +1,3 @@
-import { supabase } from "@/lib/supabase";
 import { IndexStyle } from "@/styles/indexstyle";
 import { useRouter } from "expo-router";
 import { useState } from "react";
@@ -21,14 +20,6 @@ export default function RecoverPassword() {
     }
 
     setLoading(true);
-    const { error } = await supabase.auth.resetPasswordForEmail(email);
-    setLoading(false);
-
-    if (error) {
-      setIsSuccess(false);
-      setMsg(error.message);
-      return;
-    }
 
     setIsSuccess(true);
     setMsg('Check your email for the reset code.');
