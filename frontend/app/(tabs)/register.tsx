@@ -3,8 +3,7 @@ import { Colors } from "@/styles/theme";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Pressable, Text, TextInput, View } from "react-native";
-
-import { supabase } from '@/lib/supabase'
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Register() {
     const [email, setEmail] = useState('')
@@ -120,26 +119,14 @@ export default function Register() {
             handleMsg(false, "Password is too weak! Please use a stronger password.");
             return;
         }
-
-        const { data, error } = await supabase.auth.signUp({
-            email: email,
-            password: password,
-            options: {
-                data: {
-                    username: username,
-                },
-            },
-        })
         
-        if (data) {
-            handleMsg(true, "Registration successful! Please check your email to verify your account.");
-            router.push('/');
-        }
+        handleMsg(true, "Registration successful! Please check your email to verify your account.");
+        router.push('/');
     }
 
     const RequirementCheck = ({ label, met }: { label: string; met: boolean }) => {
         return (
-            <View style={RegisterStyle.requirementItem}>
+            <SafeAreaView style={RegisterStyle.requirementItem} edges={['top', 'bottom']} >
                 <View style={[
                     RegisterStyle.requirementIndicator,
                     { backgroundColor: met ? Colors.jade_green : Colors.brown_red }
@@ -158,7 +145,7 @@ export default function Register() {
                 ]}>
                     {label}
                 </Text>
-            </View>
+            </SafeAreaView>
         );
     };
 
@@ -167,6 +154,7 @@ export default function Register() {
             <View style={RegisterStyle.registerForm} >
                 <Text style={RegisterStyle.welcomeText} >Register</Text>
 
+                <Text>Email:</Text>
                 <TextInput style={RegisterStyle.userInput}
                     placeholder="gamewikireader@email.com"
                     placeholderTextColor={`${Colors.vanilla_custard}80`}
@@ -176,6 +164,7 @@ export default function Register() {
                     keyboardType="email-address"
                 />
 
+                <Text>Username:</Text>
                 <TextInput style={RegisterStyle.userInput}
                     placeholder="gamewikireader"
                     placeholderTextColor={`${Colors.vanilla_custard}80`}
@@ -184,6 +173,7 @@ export default function Register() {
                     autoCapitalize="none"
                 />
 
+                <Text>Password:</Text>
                 <TextInput style={RegisterStyle.userInput}
                     placeholder="Enter password"
                     placeholderTextColor={`${Colors.vanilla_custard}80`}

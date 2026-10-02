@@ -1,80 +1,125 @@
 import { HomeStyle } from "@/styles/screens/homestyle";
 import { Href, useRouter } from "expo-router";
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
-import GameBar from "../components/gamebar";
+import { Ionicons } from '@expo/vector-icons';
+import GameBar from "../../components/gamebar";
+import { useEffect, useState } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomePage() {
   const router = useRouter();
+  const [username, setUsername] = useState('');
+  const [greeting, setGreeting] = useState('');
 
-    const games = [
+  useEffect(() => {
+    const hour = new Date().getHours();
+    if (hour < 12) setGreeting('Good morning,');
+    else if (hour < 18) setGreeting('Good afternoon,');
+    else setGreeting('Good evening,');
+
+
+
+    const name = 'testing123';
+    
+    if (name) setUsername(name);
+  }, []);
+
+  const avatarInitial = username ? username[0].toUpperCase() : '?';
+
+  const games = [
     {
-      image: require('../../assets/images/game_icon/azur_lane.jpg'),
+      image: require('@/assets/images/game_icon/azur_lane.jpg'),
       title: 'Azur Lane',
-      description: '2D side-scrolling naval shooter featuring anime shipgirls, fleet building, and real-time combat.',
-      page: '/azurlane' as Href,
+      description: 'Naval shooter · Fleet building',
+      page: '/games/azurlane' as Href,
+      badge: '',
     },
     {
-      image: require('../../assets/images/game_icon/genshin_impact.jpg'),
+      image: require('@/assets/images/game_icon/genshin_impact.jpg'),
       title: 'Genshin Impact',
-      description: '3D open-world action RPG with elemental combat, exploration, and a story-driven fantasy world.',
-      page: '/genshinimpact' as Href,
+      description: 'Open-world RPG · Elemental combat',
+      page: '/games/genshinimpact' as Href,
     },
     {
-      image: require('../../assets/images/game_icon/honkai_impact_3rd.jpg'),
+      image: require('@/assets/images/game_icon/honkai_impact_3rd.jpg'),
       title: 'Honkai Impact 3rd',
-      description: '3D fast-paced action game with hack-and-slash combat, cinematic battles, and character-driven story.',
-      page: '/honkaiimpact3' as Href,
+      description: 'Action · Hack-and-slash combat',
+      page: '/games/honkaiimpact3' as Href,
     },
     {
-      image: require('../../assets/images/game_icon/honkai_star_rail.jpg'),
+      image: require('@/assets/images/game_icon/honkai_star_rail.jpg'),
       title: 'Honkai: Star Rail',
-      description: 'Turn-based 3D RPG with sci-fi fantasy setting and strategic combat.',
-      page: '/honkaistarrail' as Href,
+      description: 'Turn-based · Sci-fi fantasy',
+      page: '/games/honkaistarrail' as Href,
     },
     {
-      image: require('../../assets/images/game_icon/umamusume_pretty_derby.png'),
+      image: require('@/assets/images/game_icon/umamusume_pretty_derby.png'),
       title: 'Umamusume Pretty Derby',
-      description: '3D character-training and horse racing simulation focused on strategy, growth, and live races.',
-      page: '/umamusumeprettyderby' as Href,
+      description: 'Training sim · Horse racing',
+      page: '/games/umamusumeprettyderby' as Href,
     },
     {
-      image: require('../../assets/images/game_icon/blue_archive.jpg'),
+      image: require('@/assets/images/game_icon/blue_archive.jpg'),
       title: 'Blue Archive',
-      description: '2.5D tactical RPG featuring schoolgirls, squad combat, and story-driven missions.',
-      page: '/bluearchive' as Href,
+      description: 'Tactical RPG · Squad combat',
+      page: '/games/bluearchive' as Href,
     },
     {
-      image: require('../../assets/images/game_icon/arknights.png'),
+      image: require('@/assets/images/game_icon/arknights.png'),
       title: 'Arknights',
-      description: '2D tower defense game with strategic placement and dark sci-fi storytelling.',
-      page: '/arknights' as Href,
+      description: 'Tower defense · Sci-fi storytelling',
+      page: '/games/arknights' as Href,
     },
-  ]
+    {
+      image: require('@/assets/images/game_icon/arknights.png'),
+      title: 'Arknights Endfield',
+      description: 'Open World · Sci-fi storytelling · Factory Building',
+      page: '/games/arknightsendfield' as Href,
+    },
+  ];
 
   return (
-    <View style={HomeStyle.bodyContainer}>
-      <Text style={HomeStyle.headerText}>Game Wiki</Text>
-      <Text style={HomeStyle.sectionLabel}>Select a game to explore</Text>
+    <SafeAreaView style={HomeStyle.bodyContainer} edges={['top', 'bottom']} >
+
+      {/* Header */}
+      <View style={HomeStyle.headerRow}>
+        <View>
+          <Text style={HomeStyle.greeting}>{greeting} {username}</Text>
+          <Text style={HomeStyle.headerText}>Game Wiki</Text>
+        </View>
+        <View style={HomeStyle.avatar}>
+          <Text style={HomeStyle.avatarText}>{avatarInitial}</Text>
+        </View>
+      </View>
+
+      {/* Search bar (visual only — wire up if needed) */}
+      <View style={HomeStyle.searchBar}>
+        <Ionicons name="search-outline" size={16} color="#4a9985" />
+        <Text style={HomeStyle.searchText}>Search games…</Text>
+      </View>
+
+      <Text style={HomeStyle.sectionLabel}>All Games</Text>
 
       <ScrollView
         style={HomeStyle.scrollContainer}
-        contentContainerStyle={{ gap: 10 }}
+        contentContainerStyle={{ gap: 9, paddingBottom: 24 }}
         showsVerticalScrollIndicator={false}
       >
         {games.map((game, index) => (
           <TouchableOpacity
             key={index}
             onPress={() => router.push(game.page)}
-            activeOpacity={0.85}
+            activeOpacity={0.8}
           >
             <GameBar
               image={game.image}
               title={game.title}
               description={game.description}
+              badge={game.badge}
             />
           </TouchableOpacity>
         ))}
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
